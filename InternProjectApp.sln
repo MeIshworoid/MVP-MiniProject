@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPLibrary", "MVPLibrary\MV
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPDapperLibrary", "MVPDapperLibrary\MVPDapperLibrary.csproj", "{2B1C7062-565D-41C4-8DBF-62C3A6EF6F4F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVPUnitTests", "MVPUnitTests\MVPUnitTests.csproj", "{78278824-C604-4B0D-B233-12AE5029C2B1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{2B1C7062-565D-41C4-8DBF-62C3A6EF6F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B1C7062-565D-41C4-8DBF-62C3A6EF6F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B1C7062-565D-41C4-8DBF-62C3A6EF6F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78278824-C604-4B0D-B233-12AE5029C2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78278824-C604-4B0D-B233-12AE5029C2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78278824-C604-4B0D-B233-12AE5029C2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78278824-C604-4B0D-B233-12AE5029C2B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

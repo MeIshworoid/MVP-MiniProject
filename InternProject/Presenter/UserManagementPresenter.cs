@@ -69,17 +69,17 @@ namespace InternProject.Presenter
 
         }
 
-        public (int,bool) UpdateUser(UserViewModel user)
+        public (int, bool) UpdateUser(UserViewModel user)
         {
             int output = 0;
             bool isChanged = false;
 
-            if(user.FirstName != _userManagementView.FirstName ||
+            if (user.FirstName != _userManagementView.FirstName ||
                user.LastName != _userManagementView.LastName ||
                user.EmailAddress != _userManagementView.EmailAddress ||
                user.Password != _userManagementView.Password)
             {
-                
+
                 isChanged = true;
 
                 user.FirstName = _userManagementView.FirstName;
@@ -90,7 +90,7 @@ namespace InternProject.Presenter
                 output = _userRepository.UpdateUser(user);
             }
 
-            return (output,isChanged);
+            return (output, isChanged);
         }
 
         public int DeleteUser(int userId)
