@@ -1,4 +1,5 @@
 ﻿using InternProject.Presenter;
+using MVPDapperLibrary.Repositories;
 using MVPLibrary.Models;
 using MVPLibrary.Repositories;
 using System;
@@ -19,7 +20,7 @@ namespace InternProject.View
         {
             InitializeComponent();
 
-            Presenter = new UserRegisterPresenter(this, new UserRepository());
+            Presenter = new UserRegisterPresenter(this, new DapUserRepository());
         }
 
         //TO-DO Implement this later

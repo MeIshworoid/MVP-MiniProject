@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 
 namespace MVPLibrary.Repositories
 {
-    public interface IUserRepository
+    public interface IUserRepository<T>
     {
         int CreateUser(UserViewModel user);
         int UpdateUser(UserViewModel user);
         int DeleteUser(int id);
-        DataTable GetUsers();
-        DataTable GetUserByName(string userName);
+        T GetUser();
+        List<T> GetUsers();
+        T GetUserByName(string userName);
     }
 }

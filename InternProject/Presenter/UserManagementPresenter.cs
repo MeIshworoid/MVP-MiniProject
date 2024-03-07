@@ -13,9 +13,9 @@ namespace InternProject.Presenter
     public class UserManagementPresenter
     {
         private readonly IUserManagement _userManagementView;
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository<UserViewModel> _userRepository;
 
-        public UserManagementPresenter(IUserManagement userManagementView, UserRepository userRepository)
+        public UserManagementPresenter(IUserManagement userManagementView, IUserRepository<UserViewModel> userRepository)
         {
             _userManagementView = userManagementView;
             _userRepository = userRepository;
@@ -27,9 +27,9 @@ namespace InternProject.Presenter
 
             List<string> names = new List<string>();
             string name = "";
-            foreach (DataRow row in users.Rows)
+            foreach (UserViewModel user in users)
             {
-                name = row["FirstName"].ToString();
+                name = user.FirstName;
                 names.Add(name);
             }
 
@@ -38,25 +38,13 @@ namespace InternProject.Presenter
 
         public void GetUserDetail(string userName)
         {
-            var data = _userRepository.GetUserByName(userName);
+            var user = _userRepository.GetUserByName(userName);
 
-            if (data.Rows.Count > 0)
+            if (user != null)
             {
-                DataRow row = data.Rows[0];
-
-                UserViewModel user = new UserViewModel
-                {
-                    Id = Convert.ToInt32(row["Id"]),
-                    FirstName = row["FirstName"].ToString(),
-                    LastName = row["LastName"].ToString(),
-                    EmailAddress = row["EmailAddress"].ToString(),
-                    Password = row["Password"].ToString(),
-                };
-
                 _userManagementView.User = user;
-
-                PopulateData(_userManagementView.User);
             }
+            PopulateData(_userManagementView.User);
         }
 
         private void PopulateData(UserViewModel user)

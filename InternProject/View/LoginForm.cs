@@ -1,6 +1,7 @@
 ﻿using InternProject.Presenter;
 using InternProject.Utility;
 using InternProject.View;
+using MVPDapperLibrary.Repositories;
 using MVPLibrary.Models;
 using MVPLibrary.Repositories;
 using System;
@@ -25,7 +26,7 @@ namespace InternProject
         {
             InitializeComponent();
 
-            Presenter = new UserLoginPresenter(this, new UserRepository());
+            Presenter = new UserLoginPresenter(this, new DapUserRepository());
         }
 
         private void registerButton_Click(object sender, EventArgs e)

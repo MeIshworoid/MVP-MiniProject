@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MVPLibrary.Repositories
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository : IUserRepository<DataTable>
     {
         public int CreateUser(UserViewModel user)
         {
@@ -23,7 +23,7 @@ namespace MVPLibrary.Repositories
                 new SqlParameter("@Password",user.Password)
             };
 
-            return UserDAO.IDU(UserSQL.createUser,CommandType.Text,sqlParameters);
+            return UserDAO.IDU(UserSQL.createUser, CommandType.Text, sqlParameters);
         }
 
         public int DeleteUser(int id)
@@ -43,12 +43,17 @@ namespace MVPLibrary.Repositories
                 new SqlParameter("@FirstName",userName)
             };
 
-            return UserDAO.GetDataTable(UserSQL.getUserByName,CommandType.Text,sqlParameters);
+            return UserDAO.GetDataTable(UserSQL.getUserByName, CommandType.Text, sqlParameters);
         }
 
-        public DataTable GetUsers()
+        public DataTable GetUser()
         {
-            return UserDAO.GetDataTable(UserSQL.getUsers,CommandType.Text);
+            return UserDAO.GetDataTable(UserSQL.getUsers, CommandType.Text);
+        }
+
+        public List<DataTable> GetUsers()
+        {
+            return new List<DataTable>();
         }
 
         public int UpdateUser(UserViewModel user)

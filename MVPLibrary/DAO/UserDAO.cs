@@ -13,37 +13,9 @@ namespace MVPLibrary.DAO
 {
     public static class UserDAO
     {
-        private static string GetConnectionString(string connectionString = "Default")
-        {
-            string output = "";
-
-            //var assemblyLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("appsettings.json");
-
-            var configuration = builder.Build();
-
-            output = configuration.GetConnectionString(connectionString);
-
-            return output;
-        }
-
-        private static SqlConnection GetSqlConnection()
-        {
-            string connectionString = GetConnectionString();
-            SqlConnection connection = new SqlConnection(connectionString);
-            if(connection.State != ConnectionState.Open)
-            {
-                connection.Open();
-            }
-            return connection;
-        }
-
         public static int IDU(string sqlStatement,CommandType cmdType, SqlParameter[] sqlParameters)
         {
-            using(SqlConnection sqlConnection = GetSqlConnection())
+            using(SqlConnection sqlConnection = DbConnectionHelper.GetSqlConnection())
             {
                 using(SqlCommand cmd = new SqlCommand())
                 {
@@ -61,7 +33,7 @@ namespace MVPLibrary.DAO
 
         public static DataTable GetDataTable(string sqlStatement,CommandType cmdType, SqlParameter[] sqlParameters = null)
         {
-            using (SqlConnection sqlConnection = GetSqlConnection())
+            using (SqlConnection sqlConnection = DbConnectionHelper.GetSqlConnection())
             {
                 using(SqlCommand cmd = new SqlCommand())
                 {

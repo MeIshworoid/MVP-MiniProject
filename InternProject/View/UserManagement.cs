@@ -1,5 +1,6 @@
 ﻿using InternProject.Presenter;
 using InternProject.Utility;
+using MVPDapperLibrary.Repositories;
 using MVPLibrary.Models;
 using MVPLibrary.Repositories;
 using System;
@@ -22,7 +23,7 @@ namespace InternProject.View
 
             loginInfoLabel.Text = $"Id: {SessionHelper.Id} Username: {SessionHelper.UserName}";
 
-            Presenter = new UserManagementPresenter(this, new UserRepository());
+            Presenter = new UserManagementPresenter(this, new DapUserRepository());
 
             GetUserNameList();
         }

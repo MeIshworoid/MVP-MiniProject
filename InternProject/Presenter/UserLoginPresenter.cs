@@ -1,4 +1,5 @@
 ﻿using InternProject.View;
+using MVPLibrary.Models;
 using MVPLibrary.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,9 +13,9 @@ namespace InternProject.Presenter
     public class UserLoginPresenter
     {
         private readonly IUserLogin _userLoginView;
-        private readonly UserRepository _userRepository;
+        private readonly IUserRepository<UserViewModel> _userRepository;
 
-        public UserLoginPresenter(IUserLogin userLoginView,UserRepository userRepository)
+        public UserLoginPresenter(IUserLogin userLoginView, IUserRepository<UserViewModel> userRepository)
         {
             _userLoginView = userLoginView;
             userLoginView.Presenter = this;
@@ -27,12 +28,12 @@ namespace InternProject.Presenter
             bool isAuthenticated = false;
             int id = 0;
             string userName = "";
-            foreach (DataRow userRow in users.Rows)
+            foreach (UserViewModel user in users)
             {
-                id = (int)userRow["Id"];
-                userName = userRow["FirstName"].ToString();
-                string email = userRow["EmailAddress"].ToString();
-                string password = userRow["Password"].ToString();
+                id = user.Id;
+                userName = user.FirstName;
+                string email = user.EmailAddress;
+                string password = user.Password;
 
                 isAuthenticated = AuthenticateUser(email, password);
                 if (isAuthenticated == true)

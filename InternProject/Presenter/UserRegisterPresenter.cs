@@ -14,9 +14,9 @@ namespace InternProject.Presenter
     public class UserRegisterPresenter
     {
         private readonly IUserRegister _userRegisterView;
-        private readonly IUserRepository _userRepository;
+        private readonly IUserRepository<UserViewModel> _userRepository;
 
-        public UserRegisterPresenter(IUserRegister userRegisterView, IUserRepository userRepository)
+        public UserRegisterPresenter(IUserRegister userRegisterView, IUserRepository<UserViewModel> userRepository)
         {
             _userRegisterView = userRegisterView;
             userRegisterView.Presenter = this;

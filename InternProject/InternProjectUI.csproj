@@ -109,6 +109,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MVPDapperLibrary\MVPDapperLibrary.csproj">
+      <Project>{2B1C7062-565D-41C4-8DBF-62C3A6EF6F4F}</Project>
+      <Name>MVPDapperLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MVPLibrary\MVPLibrary.csproj">
       <Project>{e8a2540f-8ff3-4f21-b8ba-a0a2103add08}</Project>
       <Name>MVPLibrary</Name>
